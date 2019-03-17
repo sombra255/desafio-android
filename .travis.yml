@@ -11,6 +11,7 @@ android:
     - extra-google-m2repository
     - android-$ANDROID_EMU_API_LEVEL
     - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+    - addon
 
 before_install:
   - chmod +x gradlew
@@ -20,6 +21,7 @@ before_install:
 
 script:
   - ./gradlew test
+  - ./gradlew connectedAndroidTest
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

@@ -48,7 +48,7 @@ public class MainActivityAbreTelaFiltrarTest {
         appCompatButton.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.toolbar_title), withText("Filtrar"),
+                allOf(withId(R.id.toolbar_title), withText("Filtrar12"),
                         childAtPosition(
                                 allOf(withId(R.id.toolbarPrincipal),
                                         childAtPosition(
