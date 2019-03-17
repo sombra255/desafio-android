@@ -1,6 +1,5 @@
 package br.com.fabricio.desafioandroid.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import br.com.fabricio.desafioandroid.R;
-import br.com.fabricio.desafioandroid.model.All;
 
 public class FiltrarActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
@@ -62,14 +60,6 @@ public class FiltrarActivity extends AppCompatActivity implements CompoundButton
         btnAplicarFiltro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.putExtra("filManha",filManha);
-//                intent.putExtra("filTarde",filTarde);
-//                intent.putExtra("filNoite",filNoite);
-//                intent.putExtra("filMadrugada",filMadrugada);
-//                intent.putExtra("filVooUmaParada",filVooUmaParada);
-//                intent.putExtra("filVooDireto",filVooDireto);
-//                setResult(MainActivity.FILTRAR,intent);
                 finish();
             }
         });

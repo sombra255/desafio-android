@@ -6,7 +6,10 @@ import java.util.List;
 import br.com.fabricio.desafioandroid.model.Inbound;
 import br.com.fabricio.desafioandroid.model.Outbound;
 
-import static br.com.fabricio.desafioandroid.utils.FormatarDataHora.*;
+import static br.com.fabricio.desafioandroid.utils.FormatarDataHora.isMadrugada;
+import static br.com.fabricio.desafioandroid.utils.FormatarDataHora.isManha;
+import static br.com.fabricio.desafioandroid.utils.FormatarDataHora.isNoite;
+import static br.com.fabricio.desafioandroid.utils.FormatarDataHora.isTarde;
 
 /**
  * Created by Fabricio on 16/03/2019.
@@ -111,43 +114,4 @@ public class Filtrar {
         }
     }
 
-//    public static List<Inbound> filtrarVoosManha(List<Inbound> inbounds) {
-//        List<Inbound>lsInbounds = new ArrayList<>();
-//        for(Inbound in : inbounds){
-//            if(isManha(in.getDepartureDate())){
-//                lsInbounds.add(in);
-//            }
-//        }
-//        return lsInbounds;
-//    }
-//
-//    public static List<Inbound> filtrarVoosTarde(List<Inbound> inbounds) {
-//        List<Inbound>lsInbounds = new ArrayList<>();
-//        for(Inbound in : inbounds){
-//            if(isTarde(in.getDepartureDate())){
-//                lsInbounds.add(in);
-//            }
-//        }
-//        return lsInbounds;
-//    }
-//
-//    public static List<Inbound> filtrarVoosNoite(List<Inbound> inbounds) {
-//        List<Inbound>lsInbounds = new ArrayList<>();
-//        for(Inbound in : inbounds){
-//            if(isNoite(in.getDepartureDate())){
-//                lsInbounds.add(in);
-//            }
-//        }
-//        return lsInbounds;
-//    }
-//
-//    public static List<Inbound> filtrarVoosMadrugada(List<Inbound> inbounds) {
-//        List<Inbound>lsInbounds = new ArrayList<>();
-//        for(Inbound in : inbounds){
-//            if(isMadrugada(in.getDepartureDate())){
-//                lsInbounds.add(in);
-//            }
-//        }
-//        return lsInbounds;
-//    }
 }

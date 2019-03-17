@@ -17,13 +17,7 @@ public class Ordenar {
     public static List<Inbound> ordenarMenor(List<Inbound> inbounds) {
         Collections.sort(inbounds, new Comparator<Inbound>() {
             public int compare(Inbound obj1, Inbound obj2) {
-                // ## Ascending ordenarMenorPrecoMenorTempo
                 return obj1.getPricing().getOta().getSaleTotal().compareTo(obj2.getPricing().getOta().getSaleTotal()); // To compare string values
-                // return Integer.valueOf(obj1.empId).compareTo(Integer.valueOf(obj2.empId)); // To compare integer values
-
-                // ## Descending ordenarMenorPrecoMenorTempo
-                // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values
-                // return Integer.valueOf(obj2.empId).compareTo(Integer.valueOf(obj1.empId)); // To compare integer values
             }
         });
         return inbounds;
@@ -32,13 +26,7 @@ public class Ordenar {
     public static List<Inbound> ordenarMaior(List<Inbound> inbounds) {
         Collections.sort(inbounds, new Comparator<Inbound>() {
             public int compare(Inbound obj1, Inbound obj2) {
-                // ## Ascending ordenarMenorPrecoMenorTempo
                 return obj2.getPricing().getOta().getSaleTotal().compareTo(obj1.getPricing().getOta().getSaleTotal()); // To compare string values
-                // return Integer.valueOf(obj1.empId).compareTo(Integer.valueOf(obj2.empId)); // To compare integer values
-
-                // ## Descending ordenarMenorPrecoMenorTempo
-                // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values
-                // return Integer.valueOf(obj2.empId).compareTo(Integer.valueOf(obj1.empId)); // To compare integer values
             }
         });
         return inbounds;

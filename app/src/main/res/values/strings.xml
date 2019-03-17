@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aplicar_filtro">Aplicar Filtro</string>
+    <string name="aplicar_ordena_o">Aplicar Ordenação</string>
+    <string name="maior_preco">Maior preço</string>
+    <string name="menor_preco">Menor preço</string>
+    <string name="menor_preco_tempo">Menor preço e menor tempo de voo</string>
+    <string name="valor_total_taxas">Valor total c/taxas</string>
 </resources>

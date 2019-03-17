@@ -37,19 +37,19 @@
             android:id="@+id/radiobutton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Maior preço" />
+            android:text="@string/maior_preco" />
 
         <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radiobutton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menor preço" />
+            android:text="@string/menor_preco" />
 
         <android.support.v7.widget.AppCompatRadioButton
             android:id="@+id/radiobutton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menor preço e menor tempo de voo" />
+            android:text="@string/menor_preco_tempo" />
 
     </RadioGroup>
 
@@ -63,7 +63,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:text="Aplicar ordenação"
+        android:text="@string/aplicar_ordena_o"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radiogroup_control" />

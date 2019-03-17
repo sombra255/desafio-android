@@ -58,37 +58,6 @@ public class OrigemFragment extends Fragment {
             filMadrugada = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("filMadrugada", false);
             filVooUmaParada = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("filVooUmaParada", false);
             filVooDireto = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("filVooDireto", false);
-//            if(bundle.containsKey("filManha")){
-//                filManha = bundle.getBoolean("filManha");
-////                if(filManha) {
-////                    lsInboundsAux = filtrarVoosManha(all.getInbound());
-////                }
-//            }
-//            if(bundle.containsKey("filTarde")){
-//                filTarde = bundle.getBoolean("filTarde");
-////                if(filTarde) {
-////                    lsInboundsAux = filtrarVoosTarde(all.getInbound());
-////                }
-//            }
-//            if(bundle.containsKey("filNoite")){
-//                filNoite = bundle.getBoolean("filNoite");
-////                if(filNoite) {
-////                    lsInboundsAux = filtrarVoosNoite(all.getInbound());
-////                }
-//            }
-//            if(bundle.containsKey("filMadrugada")){
-//                filMadrugada = bundle.getBoolean("filMadrugada");
-////                if(filMadrugada) {
-////                    lsInboundsAux = filtrarVoosMadrugada(all.getInbound());
-////                }
-//            }
-//
-//            if(bundle.containsKey("filVooUmaParada")){
-//                filVooUmaParada = bundle.getBoolean("filVooUmaParada");
-//            }
-//            if(bundle.containsKey("filVooDireto")){
-//                filVooDireto = bundle.getBoolean("filVooDireto");
-//            }
 
             if(filManha || filTarde || filNoite || filMadrugada || filVooUmaParada || filVooDireto) {
                 all.setInbound(filtrarVoosHorario(lsInboundsAux, filManha, filTarde, filNoite, filMadrugada, filVooUmaParada, filVooDireto));
@@ -121,28 +90,10 @@ public class OrigemFragment extends Fragment {
 
     private void preencheListaPesquisa() {
         pesquisaAdapterOrigem = new PesquisaAdapterOrigem(all);
-        //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
         recyclerView.setAdapter(pesquisaAdapterOrigem);
-
-//        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Toast.makeText(getActivity(), "Click normal "+all.getInbound().get(position), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onLongItemClick(View view, int position) {
-//                Toast.makeText(getActivity(), "Click longo "+all.getOutbound().get(position), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//            }
-//        }));
     }
 }

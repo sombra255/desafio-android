@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         titleToobar = findViewById(R.id.toolbar_title);
 
-//        recyclerView = findViewById(R.id.recyclerView);
         viewPager = findViewById(R.id.viewPager);
         viewPagerTab = findViewById(R.id.smartTabLayout);
 
@@ -86,53 +85,20 @@ public class MainActivity extends AppCompatActivity {
                 .add("VOO DE VOLTA", DestinoFragment.class, args)
                 .create());
 
-//        final ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-
-//        SmartTabLayout viewPagerTab = findViewById(R.id.smartTabLayout);
         viewPagerTab.setViewPager(viewPager);
     }
-
-//    private void preencheListaPesquisa() {
-//        PesquisaAdapterOrigem pesquisaAdapter = new PesquisaAdapterOrigem(all, true);
-//        //Configurar RecyclerView
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-//        recyclerView.setAdapter(pesquisaAdapter);
-//
-//        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Toast.makeText(getApplicationContext(), "Click normal "+all.getInbound().get(position), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onLongItemClick(View view, int position) {
-//                Toast.makeText(getApplicationContext(), "Click longo "+all.getOutbound().get(position), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//            }
-//        }));
-//    }
 
     private void recuperarListaRetrofit() {
         AllService allService = retrofit.create(AllService.class);
         Call<All> allCall = allService.recuperarAll();
 
-        // Set up progress before call
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(MainActivity.this);
-//        progressDialog.setMax(100);
         progressDialog.setMessage("Carregando...");
         progressDialog.setTitle("Baixando Dados");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setCancelable(false);
-        // show it
         progressDialog.show();
 
         allCall.enqueue(new Callback<All>() {
@@ -144,11 +110,7 @@ public class MainActivity extends AppCompatActivity {
                             args = new Bundle();
                             args.putSerializable("all", all);
                             iniciaSmartTab();
-//                            for(Inbound inbound : all.getInbound()){
-//                                Log.i("IB", inbound.toString());
-//                            }
                         }
-//                        preencheListaPesquisa();
                     }
 
                     @Override
@@ -160,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirTelaFiltro(View view){
-//        numberOfClicks++;
-//        btnFiltrar.setText("Clicado " + numberOfClicks + " vezes!");
         Intent intent = new Intent(this, FiltrarActivity.class);
         startActivityForResult(intent, MainActivity.FILTRAR);
     }
@@ -177,13 +137,5 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode== ORDENAR && data != null){
             args.putInt("ord", data.getIntExtra("ord", 0));
         }
-//        if(requestCode== FILTRAR){
-//            args.putBoolean("filManha", data.getBooleanExtra("filManha", false));
-//            args.putBoolean("filTarde", data.getBooleanExtra("filTarde", false));
-//            args.putBoolean("filNoite", data.getBooleanExtra("filNoite", false));
-//            args.putBoolean("filMadrugada", data.getBooleanExtra("filMadrugada", false));
-//            args.putBoolean("filVooUmaParada", data.getBooleanExtra("filVooUmaParada", false));
-//            args.putBoolean("filVooDireto", data.getBooleanExtra("filVooDireto", false));
-//        }
     }
 }
