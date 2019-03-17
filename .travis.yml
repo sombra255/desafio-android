@@ -1,32 +1,43 @@
-jdk: oraclejdk8
+sudo: false
 language: android
-android: 
-  components: 
-    - tools
-    - platform-tools
-    - build-tools-27
-    - android-27
-    - extra-android-m2repository
-    - extra-android-support
-    - sys-img-armeabi-v7a-android-27
-    - extra-google-google_play_services
-  licenses: 
-    - android-sdk-preview-license-52d11cd2
-    - android-sdk-license-c81a61d9
-    - android-sdk-license-.+
-    - google-gdk-license-.+
-before_script:
-  - echo no | android create avd --force -n test -t android-23 --abi armeabi-v7a
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-before_cache: 
-  - "rm -f $HOME/.gradle/caches/modules-2/modules-2.lock"
-before_install: 
-  - "chmod +x gradlew"
-cache: 
-  directories: 
+notifications:
+  email: false
+before_install:
+- chmod +x gradlew
+- yes | sdkmanager "platforms;android-27"
+  - sudo apt-get -qq update
+  - sudo apt-get install -y pax
+env:
+  global:
+  - ANDROID_API_LEVEL=26
+  - ANDROID_BUILD_TOOLS_VERSION=26.0.1
+  - ANDROID_EMU_API_LEVEL=22
+  - ANDROID_ABI=armeabi-v7a
+  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+  - QEMU_AUDIO_DRV=none # Remove audio
+cache:
+  directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-script: 
-  - "./gradlew build connectedCheck --stacktrace"
+    - $HOME/.android/build-cache
+android:
+  components:
+  - tools
+  - platform-tools
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+  - android-$ANDROID_API_LEVEL
+  - android-$ANDROID_EMU_API_LEVEL
+  - extra-android-support
+  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+before_script:
+  - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_travisci\n" >> ~/.ssh/config
+  - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
+  - emulator -avd test -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+script:
+  - ./gradlew clean installDebug
+  - ./gradlew check
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedDebugAndroidTest
