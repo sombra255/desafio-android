@@ -10,9 +10,6 @@ android:
 	- sys-img-armeabi-v7a-google_apis-$ANDROID_EMULATOR_LEVEL
 
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
 	- '.+'
 
 before_install:
