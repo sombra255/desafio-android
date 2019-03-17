@@ -1,33 +1,32 @@
-sudo: false
+jdk: oraclejdk8
 language: android
-android:
-  components:
+android: 
+  components: 
+    - tools
+    - platform-tools
     - build-tools-27
-    - android-26
-    - add-on
-    - extra
-
-  licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
-
-before_install:
-- chmod +x gradlew
-- yes | sdkmanager "platforms;android-27"
-
-env:
-  global:
-    - ANDROID_API_LEVEL=27
-    - ANDROID_EMULATOR_LEVEL=21
-    - ANDROID_BUILD_TOOLS_VERSION=27.1.1
-    - ANDROID_ABI=armeabi-v7a
-    - ANDROID_TAG=google_apis
-    - ADB_INSTALL_TIMEOUT=20
-
+    - android-27
+    - extra-android-m2repository
+    - extra-android-support
+    - sys-img-armeabi-v7a-android-27
+    - extra-google-google_play_services
+  licenses: 
+    - android-sdk-preview-license-52d11cd2
+    - android-sdk-license-c81a61d9
+    - android-sdk-license-.+
+    - google-gdk-license-.+
 before_script:
-  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
-  - emulator -avd test -no-window &
+  - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
-  
+before_cache: 
+  - "rm -f $HOME/.gradle/caches/modules-2/modules-2.lock"
+before_install: 
+  - "chmod +x gradlew"
+cache: 
+  directories: 
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+script: 
+  - "./gradlew build connectedCheck --stacktrace"
