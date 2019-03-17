@@ -4,7 +4,6 @@ notifications:
   email: false
 before_install:
 - chmod +x gradlew
-- yes | sdkmanager "platforms;android-27"
   - sudo apt-get -qq update
   - sudo apt-get install -y pax
 env:
