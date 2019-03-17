@@ -35,11 +35,12 @@ before_script:
   - emulator -avd test -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
-#script:
-#  - ./gradlew clean installDebug
-#  - ./gradlew check
-#  - ./gradlew testDebugUnitTest
-#  - ./gradlew connectedDebugAndroidTest
+script:
+  - ./gradlew clean build xcuiTest -x test -x signArchives
+  - ./gradlew clean installDebug
+  - ./gradlew check
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedDebugAndroidTest
 licenses:
   - 'android-sdk-preview-license-52d11cd2'
   - 'android-sdk-license-.+'
