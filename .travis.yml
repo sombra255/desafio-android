@@ -21,6 +21,12 @@ before_install:
 script:
   - ./gradlew test
   - ./gradlew connectedDebugAndroidTest -PdisablePreDex --continue --stacktrace
+  
+licenses:
+  - 'android-sdk-preview-license-52d11cd2'
+  - 'android-sdk-license-.+'
+  - 'google-gdk-license-.+'
+  - '.+'
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
