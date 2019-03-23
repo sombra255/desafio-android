@@ -12,7 +12,6 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +21,6 @@ import br.com.fabricio.desafioandroid.R;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -71,7 +69,7 @@ public class MainActivityAbreTelaOrdenacaoDestinoTest {
         appCompatRadioButton.perform(click());
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btnAplicarOrdenacao), withText("Aplicar ordenação"),
+                allOf(withId(R.id.btnAplicarOrdenacao), withText("Aplicar Ordenação"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -80,35 +78,36 @@ public class MainActivityAbreTelaOrdenacaoDestinoTest {
                         isDisplayed()));
         appCompatButton2.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withText("VOO DE VOLTA"),
+        ViewInteraction appCompatButton3 = onView(
+                allOf(withId(R.id.btnOrdenar), withText("ORDENAR"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.smartTabLayout),
-                                        0),
+                                        withClassName(is("android.support.design.widget.CoordinatorLayout")),
+                                        1),
                                 1),
                         isDisplayed()));
-        textView.check(matches(withText("VOO DE VOLTA")));
+        appCompatButton3.perform(click());
 
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("773.86"),
+        ViewInteraction appCompatRadioButton2 = onView(
+                allOf(withId(R.id.radiobutton1), withText("Maior preço"),
                         childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
+                                allOf(withId(R.id.radiogroup_control),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                1)),
                                 1),
                         isDisplayed()));
-        textView2.check(matches(withText("773.86")));
+        appCompatRadioButton2.perform(click());
 
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("1449.04"),
+        ViewInteraction appCompatButton4 = onView(
+                allOf(withId(R.id.btnAplicarOrdenacao), withText("Aplicar Ordenação"),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        withId(android.R.id.content),
                                         0),
-                                1),
+                                2),
                         isDisplayed()));
-        textView3.check(matches(withText("1449.04")));
+        appCompatButton4.perform(click());
 
     }
 

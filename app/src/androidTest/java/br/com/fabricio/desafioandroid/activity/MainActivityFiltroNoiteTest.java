@@ -59,7 +59,7 @@ public class MainActivityFiltroNoiteTest {
         appCompatCheckBox.perform(click());
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btnAplicarFiltro), withText("Aplicar filtro"),
+                allOf(withId(R.id.btnAplicarFiltro), withText("Aplicar Filtro"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -69,46 +69,16 @@ public class MainActivityFiltroNoiteTest {
         appCompatButton2.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_horario_saida), withText("19:30"),
+                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("841.11"),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
+                                        0),
+                                1),
                         isDisplayed()));
-        textView.check(matches(withText("19:30")));
+        textView.check(matches(withText("841.11")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_horario_saida), withText("18:30"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView2.check(matches(withText("18:30")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_horario_chegada), withText("20:55"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                2),
-                        isDisplayed()));
-        textView3.check(matches(withText("20:55")));
-
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_horario_chegada), withText("22:25"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                2),
-                        isDisplayed()));
-        textView4.check(matches(withText("22:25")));
-
-        ViewInteraction textView5 = onView(
                 allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("679.41"),
                         childAtPosition(
                                 childAtPosition(
@@ -116,27 +86,17 @@ public class MainActivityFiltroNoiteTest {
                                         0),
                                 1),
                         isDisplayed()));
-        textView5.check(matches(withText("679.41")));
+        textView2.check(matches(withText("679.41")));
 
-        ViewInteraction textView6 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("841.11"),
+        ViewInteraction textView3 = onView(
+                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("679.41"),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
                                         0),
                                 1),
                         isDisplayed()));
-        textView6.check(matches(withText("841.11")));
-
-        ViewInteraction textView7 = onView(
-                allOf(withId(R.id.list_item_pesquisa_txt_valor), withText("841.11"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView7.check(matches(withText("841.11")));
+        textView3.check(matches(withText("679.41")));
 
     }
 
